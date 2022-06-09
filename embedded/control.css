@@ -1,3 +1,5 @@
+/* Created by Alejandro Zumbado Vargas */
+
 #toc_container {
     background: #f9f9f9 none repeat scroll 0 0;
     border: 1px solid #aaa;
@@ -15,4 +17,12 @@
 
 #toc_container li, #toc_container ul, #toc_container ul li{
     list-style: outside none none !important;
+}
+
+h2, h3, h4 {
+    margin: 0;
+}
+
+table, th, td {
+  border:1px solid black;
 }

@@ -1,25 +1,108 @@
+<!-- Created by Alejandro Zumbado Vargas -->
+
 <!DOCTYPE html>
 <html>
 
 <body>
     <h1>Control System</h1>
-    <p>Note: CSS and JS after content.</p>
+    <p>Note: CSS and JS after content.<br>Note2: These are all my experiences, do verify with other sources</p>
 
-    <div id="toc_container"> <!--Will be changed to side table form and as quick links-->
-        <p  class="toc_title">Contents</p>
-        <ul class="toc_list">
-        <li><a href="#stability">Stability</a></li>
-        <li><a href="#EHPD">Electric, Hydraulic, Pneumatic Drives</a></li>
-        </ul>
+    <div id="toc_container">
+        <!--Will be changed to side table form and as quick links-->
+        <p class="toc_title">Contents</p>
+        <ol class="toc_list">
+            <li><a href="#stability">Stability</a></li>
+            <li><a href="#blockdiagrams">Block Diagrams</a></li>
+            <li><a href="#EHPD">Electric, Hydraulic, Pneumatic Drives</a></li>
+        </ol>
     </div>
 
-    <h2 id="stability">Stability</h2>
-    <p>hm</p>
+    <div id="stability">
     <hr>
+    <h2 >1. Stability</h2>
+    <h3>A. Open loop, Closed Loop</h3>
+    <h4>Open loop</h4>
+    <li><b>Feedforward action</b>. Control action is based on knowledge to be controlled (called plant)</li>
+    <li>No feedback input, only output</li>
+    <li>Requires accurate model to be effective (a lot of fine tuning) </li>
 
-    <h3 id="EHPD">Electric, Hydraulic, Pneumatic Drives</h3>
+    <br>
+    <h4>Closed loop</h4>
+    <li><b>Feedback action</b></li>
+    <li>Measurements of plant output are <b>fed back</b> to the controller</li>
+    <li>Generally superior performance (accuracy, bandwidth, disturbance rejection) compared to open loop controlled
+    </li>
+    <li>Has tendency towards <b>instability</b></li>
+    </div>
+
+
+    <div id="blockdiagrams">
+        <hr>
+        <h2 >2. Block Diagrams</a></li>
+        <h3>Important Terms</h3>
+
+        <img src="blockdiagrams.png" alt="block diagram image">
+        <div id="blockdiagram_terms">
+            <ul class="blockdiagrams_list">
+        <table style="width:100%">
+            <tr>
+                <th>Symbol</th>
+                <th>Definition</th>
+                <th>Explanation</th>
+                <th>Notes</th>
+            </tr>
+            <tr>
+                <td>g(t)</td>
+                <td>Plant</td>
+                <td>System to be controlled</td>
+                <td>Open loop gain, function of frequency</td>
+            </tr>
+
+            <tr>
+                <td>u(t)</td>
+                <td>Input</td>
+                <td>Driving Input</td>
+                <td>Also is the control output which will be sent back to the plant/system
+            </tr>
+
+            <tr>
+                <td>h(t)</td>
+                <td>Controller</td>
+                <td>Produce control action</td>
+            </tr>
+
+            <tr>
+                <td>f(t)</td>
+                <td>Feedback function</td>
+                <td>Feedback function f(t) : Normally unity, used for measurement scaling</td>
+            </tr>
+            <tr>
+                <td>r(t)</td>
+                <td>Reference input</td>
+                <td>External signal to command desired system output</td>
+            </tr>
+
+            <tr>
+                <td>y(t)</td>
+                <td>Controlled output</td>
+                <td>System quantity to be regulated (System may have multiple outputs)</td>
+            </tr>
+
+        </table>
+        </div>
+    </div>
+
+
+
+
+    <div id="EHPD">
+    <hr>
+    <h2>?. Electric, Hydraulic, Pneumatic Drives</h3>
     <p>hm</p>
     <hr>
+    </div>
+
+    <div
 </body>
 
 </html>
