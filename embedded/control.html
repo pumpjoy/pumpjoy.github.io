@@ -1,7 +1,9 @@
-<!-- Created by Alejandro Zumbado Vargas -->
-
 <!DOCTYPE html>
 <html>
+
+<head>
+    <link rel="stylesheet" href="control.css">
+</head>
 
 <body>
     <h1>Control System</h1>
@@ -11,98 +13,201 @@
         <!--Will be changed to side table form and as quick links-->
         <p class="toc_title">Contents</p>
         <ol class="toc_list">
+            <li><a href="#opencloseloop">Open, Close loop</a></li>
             <li><a href="#stability">Stability</a></li>
-            <li><a href="#blockdiagrams">Block Diagrams</a></li>
+            <li><a href="#designprocess">Design Process</a></li>
             <li><a href="#EHPD">Electric, Hydraulic, Pneumatic Drives</a></li>
         </ol>
     </div>
 
-    <div id="stability">
-    <hr>
-    <h2 >1. Stability</h2>
-    <h3>A. Open loop, Closed Loop</h3>
-    <h4>Open loop</h4>
-    <li><b>Feedforward action</b>. Control action is based on knowledge to be controlled (called plant)</li>
-    <li>No feedback input, only output</li>
-    <li>Requires accurate model to be effective (a lot of fine tuning) </li>
+    <div id="opencloseloop">
+        <hr>
+        <h2>1. Open loop, Closed Loop</h2>
+        <h3>Open loop</h4>
+            <li><b>Feedforward action</b>. Control action is based on knowledge to be controlled (called plant)</li>
+            <li>No feedback input, only output</li>
+            <li>Requires accurate model to be effective (a lot of fine tuning) </li>
+            <li>Cannot compensate changes that is added to controller device</li>
+            <li>Basically, No sensors. For example: Toaster</li>
 
-    <br>
-    <h4>Closed loop</h4>
-    <li><b>Feedback action</b></li>
-    <li>Measurements of plant output are <b>fed back</b> to the controller</li>
-    <li>Generally superior performance (accuracy, bandwidth, disturbance rejection) compared to open loop controlled
-    </li>
-    <li>Has tendency towards <b>instability</b></li>
+            <br>
+            <h3>Closed loop</h4>
+                <li><b>Feedback action</b></li>
+                <li>Measurements of plant output are <b>fed back</b> to the controller</li>
+                <li>Generally superior performance (accuracy, bandwidth, disturbance rejection) compared to open loop
+                    controlled</li>
+                <li>Has tendency towards <b>instability</b></li>
+                <li>Has sensors (output transducer) that measures output response</li>
+                <li>Compensate changes by measuring output via sensors</li>
+                <li><b>Transient response and steady state error</b> for easier control with flexibility of closed loop
+                    system (by adjusting amplification)</li>
+                <li>Actuating signal is when output is subtracted from input signal. If both input and output
+                    transducers have unity gain(amplifies input by 1), actuating signal value is equal to actual
+                    difference between input and output (error)</li>
+                </br>
+                <h3>There are 2 goals when designing a control system. First is achieve <b>Transient Response</b> and is
+                    <b>Steady-State Response that decays to zero fast</b>
     </div>
 
 
-    <div id="blockdiagrams">
+    <div id="stability">
         <hr>
-        <h2 >2. Block Diagrams</a></li>
-        <h3>Important Terms</h3>
+        <h2>2. Stability</h2>
+        <p>Taking lift as an example</p>
+        <h3>A. Transient Response</h2>
+            <li>Slow transient is when changes is too slow. EG: Users grow impatient</li>
+            <li>Fast transient is when changes is too fast. EG: Users feel uncomfortable. Fast transient response may
+                cause physical damage to components. Fast transient comes with consequent.</li>
+            <li>Sum of natural and forced but natural response is large</li>
+            <br>
+            <h3>B. Steady-State Response</h2>
+                <li>Resembles input and is remained after transient has decayed to 0. EG: Lift reaches the floor exactly
+                    at the space of lift's door</li>
+                <li>Concerned about the accuracy of steady-state response (steady-state error).</li>
+                <li>Sum of natural and forced but natural response is small</li>
 
-        <img src="embedded/blockdiagram.png" alt="block diagram image" width="500" height="600">
-        <div id="blockdiagram_terms">
-            <ul class="blockdiagrams_list">
-        <table style="width:100%">
-            <tr>
-                <th>Symbol</th>
-                <th>Definition</th>
-                <th>Explanation</th>
-                <th>Notes</th>
-            </tr>
-            <tr>
-                <td>g(t)</td>
-                <td>Plant</td>
-                <td>System to be controlled</td>
-                <td>Open loop gain, function of frequency</td>
-            </tr>
+                <h3>C. Stability</h3>
+                <h4>Natural Response</h4>
+                <li>The way the system dissipates or acquires energy</li>
+                <li>Is dependent on system and independent of input</li>
+                <li>EG: Capacitor charged to some initial voltage by an external circuit, which is disconnected awhile
+                    ago</li>
 
-            <tr>
-                <td>u(t)</td>
-                <td>Input</td>
-                <td>Driving Input</td>
-                <td>Also is the control output which will be sent back to the plant/system
-            </tr>
+                <h4>Forced Response</h4>
+                <li>2 different definitions</li>
+                <li>Circuit's final steady state (Agarwal&Lang, 2005)</li>
+                <li>Dependent on input</li>
+                <li>EG: Stop voltage as step input.</li>
 
-            <tr>
-                <td>h(t)</td>
-                <td>Controller</td>
-                <td>Produce control action</td>
-            </tr>
+                <h4>Total Response</h4>
+                <p>Total Response = Transient response temporary part (natural response) + Steady-state response
+                    permanent part (forced response)</p>
+    </div>
 
-            <tr>
-                <td>f(t)</td>
-                <td>Feedback function</td>
-                <td>Feedback function f(t) : Normally unity, used for measurement scaling</td>
-            </tr>
-            <tr>
-                <td>r(t)</td>
-                <td>Reference input</td>
-                <td>External signal to command desired system output</td>
-            </tr>
 
-            <tr>
-                <td>y(t)</td>
-                <td>Controlled output</td>
-                <td>System quantity to be regulated (System may have multiple outputs)</td>
-            </tr>
+    <div id="designprocess">
+        <hr>
+        <h2>3. Design Process </h2>
+        <ol>
+            <li>Transform requirements into physicla system and specification from requirements</li>
+            <li>Draw functional block diagram</li>
+            <li>Transform physical system into schematic</li>
+            <li>Use schematic to obtain block diagram, signal-flow diagram, or state-space representation</li>
+            <li>Reduce block diagram to a single-block or closed-loop system</li>
+            <li>Analyze, design and test if requirement and specification are met</li>
+        </ol>
 
-        </table>
-        </div>
+        <h3>A. Transform requirement into physical system</h3>
+        <li>Desired position? Desired features? Weight? Physical dimensions?</li>
+        <li>These are determined by the organizer during a robotic competition</li>
+        <br>
+
+        <h3>B. Block Diagrams</h3>
+        <p> Translates from step 1 into a diagram that describes the component parts (function and/or hardware).
+            It indicates the functions such as input sensors, motor drivers, controllers, hardware description, to
+            produce a detailed layout of the system.</p>
+        <img id="blockdiagram_img" src="embedded/blockdiagram.PNG" alt="Block diagram image" width="902" height="504">
+        <h4>Important Terms</h4>
+            <div id="blockdiagram_terms">
+                <ul class="blockdiagrams_list">
+                    <table style="width:100%">
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Definition</th>
+                            <th>Explanation</th>
+                            <th>Notes</th>
+                        </tr>
+                        <tr>
+                            <td>g(t)</td>
+                            <td>Plant</td>
+                            <td>System to be controlled</td>
+                            <td>Open loop gain, function of frequency</td>
+                        </tr>
+
+                        <tr>
+                            <td>u(t)</td>
+                            <td>Plant Input</td>
+                            <td>Driving Input</td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>h(t)</td>
+                            <td>Controller</td>
+                            <td>Produce control action</td>
+                            <!--CHECK THE ONE BELOW-->
+                            <td>The transient response block. Can be the filter for communication systems</td>
+                        </tr>
+
+                        <tr>
+                            <td>f(t)</td>
+                            <td>Feedback function</td>
+                            <td>Feedback function f(t) : Normally unity, used for measurement scaling</td>
+                            <td>EG: Encoder</td>
+                        </tr>
+                        <tr>
+                            <td>r(t)</td>
+                            <td>Reference input</td>
+                            <td>External signal to command desired system output</td>
+                            <td>The setpoint where the actual response is compared to this input (the error between
+                                desired and actual response is offset)</td>
+                        </tr>
+
+                        <tr>
+                            <td>y(t)</td>
+                            <td>Controlled output</td>
+                            <td>System quantity to be regulated (System may have multiple outputs)</td>
+                            <td>The result hopefully has least offset</td>
+                        </tr>
+
+                    </table>
+            </div>
+        
+        <br>
+        <h3>F. Analyze and Design</h3>
+        <p>Physical laws such as Kirchoff's laws for electrical networks and Newton's law for mechanical system for mathamatical model development(block diagram)</p>
+        <p>The steps of block making until prior to this step can be reduced if only the performance of a single subsystem is interested (EG:Only encoder and wheel)</p>
+        <li>Test input signal for both analytical and during testing are used to verify the design</li>
+        <li>It is important to choose simple and standarized test inputs to avoid complications</li>
+        <li><b>Such inputs are impulses, steps, ramps, parabolas and sinusoids</b></li>
+
+        <h4>Impulse input</h4>
+        <li>Is infinite at t=0 and 0 everywhere else</li>
+        <li>Area under the unit impulse is 1 where the approximation of this type of waveform is used to place initial energy into system so that the response due to that <b>initial energy is only a transient response of a system</b>
+        <li>This response is used to <b>derive a mathematical model of the system</b></li>
+
+        <br>
+        <h4>Step input</h4>
+        <li>Represents a constant command</li>
+        <li>EG: position, velocity, acceleration</li>
+        <li>Typically step input command is of the same form of the output</li>
+
     </div>
 
 
 
 
     <div id="EHPD">
-    <hr>
-    <h2>?. Electric, Hydraulic, Pneumatic Drives</h3>
-    <p>hm</p>
-    <hr>
+        <hr>
+        <h2>?. Electric, Hydraulic, Pneumatic Drives</h3>
+            <p>hm</p>
+            <hr>
     </div>
 
-    <div
+    <div id="reference">
+        <hr>
+        <h2>References</h2>
+        <ol>
+            <li>Agarwal, A., & Lang, J. (2005). Foundations of analog and digital electronic circuits. Elsevier.</li>
+            <li>Alexander, C. K., Sadiku, M. N., & Sadiku, M. (2007). Fundamentals of electric circuits. Boston:
+                McGraw-Hill Higher Education.</li>
+        </ol>
+
+        <br>
+        <h2>Appendix</h2>
+        <p>These are list of websites for more information</p>
+        <li>https://spinningnumbers.org/a/forced-response.html</li>
+    </div>
 </body>
 
 </html>
