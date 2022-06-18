@@ -1,3 +1,5 @@
+<!-- Created by Alejandro Zumbado Vargas -->
+
 <!DOCTYPE html>
 <html>
 
@@ -13,11 +15,28 @@
         <!--Will be changed to side table form and as quick links-->
         <p class="toc_title">Contents</p>
         <ol class="toc_list">
+            <li><a href="#predefinitions">Predefinitions</a></li>
             <li><a href="#opencloseloop">Open, Close loop</a></li>
             <li><a href="#stability">Stability</a></li>
             <li><a href="#designprocess">Design Process</a></li>
             <li><a href="#EHPD">Electric, Hydraulic, Pneumatic Drives</a></li>
         </ol>
+    </div>
+
+    <div id="predefinitions">
+        <h2>Predefinitions</h2>
+        <h3>Ohm's Law</h3>
+        <li>Mathematical model to represent system that has voltage across resistor that is dependent on current passing
+            through resistance</li>
+
+        <br>
+        <h3>Laplace Theory</h3>
+        <li>Plays important role in control theory</li>
+        <li>Transform differential equation to linear algebraic function</li>
+        <li>Time domain function is transform into its equivalent frequency domain function</li>
+        <li>Applicable for linear time invariant systems</li>
+        <li>Simplifies the process of solving differential equations</li>
+
     </div>
 
     <div id="opencloseloop">
@@ -106,74 +125,78 @@
         <p> Translates from step 1 into a diagram that describes the component parts (function and/or hardware).
             It indicates the functions such as input sensors, motor drivers, controllers, hardware description, to
             produce a detailed layout of the system.</p>
-        <img id="blockdiagram_img" src="blockdiagram.PNG" alt="Block diagram image" width="902" height="504">
+        <img id="blockdiagram_img" src="embedded/blockdiagram.PNG" alt="Block diagram image" width="902" height="504" class="center">
         <h4>Important Terms</h4>
-            <div id="blockdiagram_terms">
-                <ul class="blockdiagrams_list">
-                    <table style="width:100%">
-                        <tr>
-                            <th>Symbol</th>
-                            <th>Definition</th>
-                            <th>Explanation</th>
-                            <th>Notes</th>
-                        </tr>
-                        <tr>
-                            <td>g(t)</td>
-                            <td>Plant</td>
-                            <td>System to be controlled</td>
-                            <td>Open loop gain, function of frequency</td>
-                        </tr>
+        <div id="blockdiagram_terms">
+            <ul class="blockdiagrams_list">
+                <table style="width:100%">
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Definition</th>
+                        <th>Explanation</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>g(t)</td>
+                        <td>Plant</td>
+                        <td>System to be controlled</td>
+                        <td>Open loop gain, function of frequency</td>
+                    </tr>
 
-                        <tr>
-                            <td>u(t)</td>
-                            <td>Plant Input</td>
-                            <td>Driving Input</td>
-                            <td></td>
-                        </tr>
+                    <tr>
+                        <td>u(t)</td>
+                        <td>Plant Input</td>
+                        <td>Driving Input</td>
+                        <td></td>
+                    </tr>
 
-                        <tr>
-                            <td>h(t)</td>
-                            <td>Controller</td>
-                            <td>Produce control action</td>
-                            <!--CHECK THE ONE BELOW-->
-                            <td>The transient response block. Can be the filter for communication systems</td>
-                        </tr>
+                    <tr>
+                        <td>h(t)</td>
+                        <td>Controller</td>
+                        <td>Produce control action</td>
+                        <!--CHECK THE ONE BELOW-->
+                        <td>The transient response block. Can be the filter for communication systems</td>
+                    </tr>
 
-                        <tr>
-                            <td>f(t)</td>
-                            <td>Feedback function</td>
-                            <td>Feedback function f(t) : Normally unity, used for measurement scaling</td>
-                            <td>EG: Encoder</td>
-                        </tr>
-                        <tr>
-                            <td>r(t)</td>
-                            <td>Reference input</td>
-                            <td>External signal to command desired system output</td>
-                            <td>The setpoint where the actual response is compared to this input (the error between
-                                desired and actual response is offset)</td>
-                        </tr>
+                    <tr>
+                        <td>f(t)</td>
+                        <td>Feedback function</td>
+                        <td>Feedback function f(t) : Normally unity, used for measurement scaling</td>
+                        <td>EG: Encoder</td>
+                    </tr>
+                    <tr>
+                        <td>r(t)</td>
+                        <td>Reference input</td>
+                        <td>External signal to command desired system output</td>
+                        <td>The setpoint where the actual response is compared to this input (the error between
+                            desired and actual response is offset)</td>
+                    </tr>
 
-                        <tr>
-                            <td>y(t)</td>
-                            <td>Controlled output</td>
-                            <td>System quantity to be regulated (System may have multiple outputs)</td>
-                            <td>The result hopefully has least offset</td>
-                        </tr>
+                    <tr>
+                        <td>y(t)</td>
+                        <td>Controlled output</td>
+                        <td>System quantity to be regulated (System may have multiple outputs)</td>
+                        <td>The result hopefully has least offset</td>
+                    </tr>
 
-                    </table>
-            </div>
-        
+                </table>
+        </div>
+
         <br>
         <h3>F. Analyze and Design</h3>
-        <p>Physical laws such as Kirchoff's laws for electrical networks and Newton's law for mechanical system for mathamatical model development(block diagram)</p>
-        <p>The steps of block making until prior to this step can be reduced if only the performance of a single subsystem is interested (EG:Only encoder and wheel)</p>
+        <p>Physical laws such as Kirchoff's laws for electrical networks and Newton's law for mechanical system for
+            mathamatical model development(block diagram)</p>
+        <p>The steps of block making until prior to this step can be reduced if only the performance of a single
+            subsystem is interested (EG:Only encoder and wheel)</p>
         <li>Test input signal for both analytical and during testing are used to verify the design</li>
         <li>It is important to choose simple and standarized test inputs to avoid complications</li>
         <li><b>Such inputs are impulses, steps, ramps, parabolas and sinusoids</b></li>
 
         <h4>Impulse input</h4>
         <li>Is infinite at t=0 and 0 everywhere else</li>
-        <li>Area under the unit impulse is 1 where the approximation of this type of waveform is used to place initial energy into system so that the response due to that <b>initial energy is only a transient response of a system</b>
+        <li>Area under the unit impulse is 1 where the approximation of this type of waveform is used to place initial
+            energy into system so that the response due to that
+            <b>initial energy is only a transient response of a system</b>
         <li>This response is used to <b>derive a mathematical model of the system</b></li>
 
         <br>
@@ -181,6 +204,19 @@
         <li>Represents a constant command</li>
         <li>EG: position, velocity, acceleration</li>
         <li>Typically step input command is of the same form of the output</li>
+
+        <br>
+        <h4>Ramp and Parabolic input</h4>
+        <li>Represents linearly increasing command</li>
+        <li>Position of an object is constantly moving forward at the same velocity. If output is velocity, input ramp
+            is the linearly increasing velocity</li>
+        <li>Parabolic is similar but exponential</li>
+        <li>Both used to evaluate system's steady-state error</li>
+
+        <br>
+        <h4>Sinusoidal input</h4>
+        <li>To test a physical system to arrive at a mathematical model</li>
+        <li>Kinda special case</li>
 
     </div>
 
