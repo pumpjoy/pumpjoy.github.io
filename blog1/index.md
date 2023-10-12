@@ -1,5 +1,0 @@
----
-layout: blog1
-title: 'My first post'
-date: 2023-10-08 13:56
----
